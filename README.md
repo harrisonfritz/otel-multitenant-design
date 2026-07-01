@@ -86,6 +86,8 @@ Tenants should be able to define their own otel pipeline that is injected into t
 - how to protect the centralized collector from misconfigured tenant pipelines or an extremely resource intensive tenant pipeline
 - how to prevent tenants from adding a processor or filter that impacts another tenant's namespace?
 - tenant pipeline versioning is coupled to collector versioning (if a processor configuration is updated in the new collector version, the tenant pipeline configuration must change to match it.
+- how do we ensure collector pods do not have to restart? With thousands of tenants applying changes, we need a graceful reload. How does data persist through a pipeline change?
+- how do we prevent one tenant from doing an enormously expensive pipeline (I don't think fluent-bit has a way to prevent this either)
 
 ### Custom Resource example:
 ```
